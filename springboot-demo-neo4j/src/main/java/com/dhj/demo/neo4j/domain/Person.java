@@ -33,6 +33,12 @@ public class Person extends Neo4jEntity {
     @Relationship(type = "DIRECTED",direction = Relationship.OUTGOING)
     private List<Movie> dMovies;
 
+    public Person(String firstName, String lastName, Integer height) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.height = height;
+    }
+
     /**
      * 增加参演的电影
      * @param movie

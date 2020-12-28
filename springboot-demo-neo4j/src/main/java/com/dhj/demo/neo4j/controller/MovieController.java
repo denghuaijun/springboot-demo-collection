@@ -33,6 +33,11 @@ public class MovieController {
         return Lists.newArrayList(movieRepository.findByRevenueGreaterThan(revenue));
     }
 
+    @GetMapping("/customized")
+    public List<Movie> findCustomzied(){
+        return movieRepository.someCustomMethod();
+    }
+
     @GetMapping("/customFindById")
     public List<Movie> findCustomById(@RequestParam Integer id){
         return Lists.newArrayList(movieRepository.findUseClassMethod(id));

@@ -1,19 +1,14 @@
-/*
-package com.dhj.demo.business.common.utils;
+package com.dhj.demo.business.common.response;
 
-import com.dhj.demo.business.common.entity.PromptUtil;
-import com.dhj.demo.business.common.entity.ResultDTO;
 import com.github.pagehelper.Page;
 
 import java.util.List;
 
-*/
 /**
  *
  * 返回类的工具操作类
  * Created by libin on 2018/3/29.
- *//*
-
+ */
 public class ResultDTOTool {
     public static ResultDTO setSuccess(ResultDTO result) {
     	
@@ -110,4 +105,3 @@ public class ResultDTOTool {
         }
     }
 }
-*/

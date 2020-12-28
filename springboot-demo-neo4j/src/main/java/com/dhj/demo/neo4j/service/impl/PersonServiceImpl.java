@@ -1,7 +1,8 @@
-package com.dhj.demo.neo4j.service;
+package com.dhj.demo.neo4j.service.impl;
 
 import com.dhj.demo.neo4j.domain.Person;
 import com.dhj.demo.neo4j.repository.PersonRepository;
+import com.dhj.demo.neo4j.service.PersonService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

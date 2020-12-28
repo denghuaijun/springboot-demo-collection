@@ -10,4 +10,5 @@ public interface PersonRepository extends Neo4jRepository<Person,Long>,Customize
 
     Person findByfirstName(@Param("firstName")String firstName);
     Collection<Person> findByfirstNameLike(@Param("firstName")String firstName);
+    Person findByName(String name);
 }

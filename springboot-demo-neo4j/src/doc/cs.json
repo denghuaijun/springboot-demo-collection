@@ -1,0 +1,18 @@
+{
+  "movie": {
+    "title": "这是一个新电影",
+    "tagline": "这是电影宣传词",
+    "released": 2020
+  },
+  "person": {
+    "name": "李四",
+    "born": 1986
+  },
+  "relActedIn": {
+    "roles": [
+      "大铃铛",
+      "路人乙",
+      "大坏蛋"
+    ]
+  }
+}

@@ -95,5 +95,7 @@ public class PersonController {
         personRepository.save(zymPerson);
 
         return Lists.newArrayList(personRepository.findAll());
+
+        //match path=(p:Person)-[]->(m:Movie) return path;
     }
 }

@@ -8,6 +8,7 @@
         <module>springboot-demo-common</module>
         <module>springboot-demo-business-service</module>
         <module>springboot-demo-kafka</module>
+        <module>springboot-demo-neo4j</module>
     </modules>
 <!--    <parent>
         <groupId>org.springframework.boot</groupId>

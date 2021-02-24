@@ -11,5 +11,11 @@
 
     <artifactId>springboot-demo-kafka</artifactId>
 
-
+   <dependencies>
+       <!--添加springKafka依赖 -->
+       <dependency>
+           <groupId>org.springframework.kafka</groupId>
+           <artifactId>spring-kafka</artifactId>
+       </dependency>
+   </dependencies>
 </project>

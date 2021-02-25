@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: SPRINGBOOT-MVC
+server:
+  port: 9090
+
+#debug: true

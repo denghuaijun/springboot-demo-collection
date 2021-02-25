@@ -10,6 +10,7 @@
         <module>springboot-demo-kafka</module>
         <module>springboot-demo-neo4j</module>
         <module>springboot-demo-websocket</module>
+        <module>springboot-demo-web</module>
     </modules>
 <!--    <parent>
         <groupId>org.springframework.boot</groupId>

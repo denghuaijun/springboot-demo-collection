@@ -1,7 +1,12 @@
 spring:
   application:
     name: SPRINGBOOT-MVC
+    # 关闭thymleaf页面缓存
+  thymeleaf:
+    cache: false
+    #开启国际化配置的路径
+  messages:
+    basename: i18n.login
 server:
   port: 9090
-
 #debug: true

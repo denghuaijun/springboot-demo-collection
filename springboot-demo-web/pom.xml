@@ -17,6 +17,11 @@
             <artifactId>springboot-demo-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <!-- 添加thymleaf依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

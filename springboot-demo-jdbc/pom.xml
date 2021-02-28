@@ -17,6 +17,16 @@
         <java.version>11</java.version>
     </properties>
     <dependencies>
+        <!--添加mybatis依赖 非spring官方的都是各自框架的开头 -->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>2.1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
         <!--导入durid依赖 -->
         <dependency>
             <groupId>com.alibaba</groupId>

@@ -7,6 +7,10 @@ spring:
     #开启国际化配置的路径
   messages:
     basename: i18n.login
+    #日期格式化，web前后端日期转换默认的是yyyy/mm/dd,作为前后端组件配置兼容问题
+  mvc:
+    format:
+      date-time: yyyy-MM-dd HH:mm:ss
 server:
   port: 9090
 #debug: true

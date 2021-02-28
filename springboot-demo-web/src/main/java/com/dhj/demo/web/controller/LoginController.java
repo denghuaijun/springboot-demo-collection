@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * 登录页面API
  */
@@ -17,7 +19,7 @@ public class LoginController {
     public  String login(
             @RequestParam("loginUsername")String userName,
             @RequestParam("loginPassword")String password,
-            Model model){
+            Model model, HttpSession session){
         System.out.println("登录操作。。。。。。。。。。。。。。start");
         //1、若用户名和密码正确，则登陆成功，反之则提示错误信息
         if (StringUtils.isEmpty(userName) || StringUtils.isEmpty(password)){
@@ -28,6 +30,7 @@ public class LoginController {
             return "login";
         }else {
             System.out.println("登录操作。。。。。。。。。。。。。。成功！");
+            session.setAttribute("userSession",userName);
             //return "index";
             //通过视图跳转器及重定向
             return "redirect:/main.html";

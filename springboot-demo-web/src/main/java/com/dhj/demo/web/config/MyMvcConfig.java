@@ -3,6 +3,7 @@ package com.dhj.demo.web.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 //应为类型要求为WebMvcConfigurer，所以我们实现其接口
@@ -19,5 +20,12 @@ public class MyMvcConfig implements WebMvcConfigurer {
     @Bean
     public LocaleResolver localeResolver(){
         return new MyLocaleResolver();
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new LoginHandlerIntercepter()).
+                addPathPatterns("/**").
+                excludePathPatterns("/","/login.html","/user/login","/css/**","/data/**","/js/**","/img/**","/vendor/**","/fonts/**","/icons-reference/**");
     }
 }

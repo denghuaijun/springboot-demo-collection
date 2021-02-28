@@ -32,6 +32,7 @@ public class DruidConfig {
         return new DruidDataSource();
     }
     //druid后台监控，相当于一个web.xml，springboot已经将servlet内嵌在其中
+    //访问方式：http://localhost:10101/druid/
     @Bean
     public ServletRegistrationBean servletRegistrationBean(){
         ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(new StatViewServlet(),"/druid/*");

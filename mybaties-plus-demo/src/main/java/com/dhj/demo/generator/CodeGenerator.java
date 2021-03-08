@@ -68,10 +68,10 @@ public class CodeGenerator {
         dataSourceConfig.setDbType(DbType.MYSQL);
         //自定义数据类型转换
         dataSourceConfig.setTypeConvert(new MySqlTypeConvert());
-        dataSourceConfig.setUrl("jdbc:mysql://192.168.17.30:3306/test?characterEncoding=utf-8&serverTimezone=GMT%2B8&useSSL=false");
+        dataSourceConfig.setUrl("jdbc:mysql://192.168.1.3:3306/sys_user?characterEncoding=utf-8&serverTimezone=GMT%2B8&useSSL=false");
         dataSourceConfig.setDriverName("com.mysql.jdbc.Driver");
         dataSourceConfig.setUsername("root");
-        dataSourceConfig.setPassword("root");
+        dataSourceConfig.setPassword("yunfeng123456");
         mpg.setDataSource(dataSourceConfig);
 
         /**

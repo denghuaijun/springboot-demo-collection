@@ -12,6 +12,7 @@
         <module>springboot-demo-websocket</module>
         <module>springboot-demo-web</module>
         <module>springboot-demo-mail</module>
+        <module>springboot-security-jwt-auth2</module>
     </modules>
 <!--    <parent>
         <groupId>org.springframework.boot</groupId>

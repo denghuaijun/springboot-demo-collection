@@ -2,6 +2,8 @@ package com.dhj.springboot.config;
 
 import com.dhj.demo.mp.entity.SysPermission;
 import com.dhj.demo.mp.service.ISysPermissionService;
+import com.dhj.springboot.jwtfilter.JWTAuthorizationFilter;
+import com.dhj.springboot.jwtfilter.JwtLoginFilter;
 import com.dhj.springboot.service.SysUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -11,6 +13,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 
 import java.util.List;
@@ -65,10 +68,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         });
         //.antMatchers("/**").fullyAuthenticated().and().httpBasic()
                 //自定义登陆页面放行/login请求
-        authorizeRequests.antMatchers("/login").permitAll()
+        /*authorizeRequests.antMatchers("/login").permitAll()
                 .antMatchers("/**").fullyAuthenticated().and().formLogin().loginPage("/login")
                 // 解决不允许显示在iframe的问题,关闭防止csrf攻击，注销失败的可能存在的原因
-                .and().csrf().disable();
+                .and().csrf().disable();*/
+        //整合jwt
+        authorizeRequests.antMatchers("/auth/login").permitAll()
+                .antMatchers("/**").fullyAuthenticated().and().formLogin().loginPage("/login")
+                //添加登陆和请求授权过滤器
+                .and().addFilter(new JwtLoginFilter(authenticationManager()))
+                .addFilter(new JWTAuthorizationFilter(authenticationManager())).csrf().disable()
+                // 不需要session
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
 
     }
     /**

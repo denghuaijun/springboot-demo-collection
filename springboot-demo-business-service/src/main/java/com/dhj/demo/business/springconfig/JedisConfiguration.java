@@ -48,12 +48,18 @@ public class JedisConfiguration {
     @Value("${redis.prefix}")
     private String prefix;
 
+    @Value("${redis.password}")
+    private String password;
+
+    @Value("${redis.connectTimeOut}")
+    private int connectTimeOut;
+
     @Bean
     public RedisManager redisManager() {
         RedisManager redisManager = RedisManager.Builder()
                                     .hostAndPort(ips).maxTotal(maxTotal)
                 .maxIdle(maxIdle).minIdle(minIdle).maxWaitMillis(maxWait)
-                .testOnBorrow(testOnBorrow).testWhileIdle(testWhileIdle).prefix(prefix).poolBuild();
+                .testOnBorrow(testOnBorrow).testWhileIdle(testWhileIdle).prefix(prefix).password(password).connectTimeOut(connectTimeOut).poolBuild();
         return redisManager;
     }
 

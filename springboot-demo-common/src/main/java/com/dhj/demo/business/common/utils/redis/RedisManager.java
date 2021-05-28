@@ -227,6 +227,26 @@ public class RedisManager {
          */
         private String prefix;
 
+        /**
+         * 设置连接超时时间
+         */
+        private int connectTimeOut=2000;
+
+        /**
+         * 设置密码
+         */
+        private String password;
+
+        public Builder connectTimeOut(int connectTimeOut){
+            this.connectTimeOut=connectTimeOut;
+            return this;
+        }
+
+        public Builder password(String password){
+            this.password=password;
+            return this;
+        }
+
         public Builder maxTotal(int maxIdle) {
             this.maxTotal = maxIdle;
             return this;
@@ -300,7 +320,7 @@ public class RedisManager {
             if (host == null && port == null) {
                 throw new IllegalArgumentException("HOST和PORT 配置错误");
             }
-            JedisPool jedisPool = new JedisPool(jedisPoolConfig(), host,port);
+            JedisPool jedisPool = new JedisPool(jedisPoolConfig(), host,port,connectTimeOut,password);
             RedisManager redisManager = new RedisManager(jedisPool,prefix);
             return redisManager;
         }

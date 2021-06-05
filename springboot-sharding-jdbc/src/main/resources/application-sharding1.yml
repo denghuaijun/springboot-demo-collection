@@ -1,0 +1,60 @@
+# 端口号
+server:
+  port: 8080
+spring:
+  shardingsphere:
+    # 配置是否显示shardingjdbc的sql，shardingjdbc来管理数据源
+    props:
+      sql:
+        show: true
+        #数据源配置
+    datasource:
+      names: ds0,ds1
+      #配置主数据源 ds1
+      ds0:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://192.168.80.21:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+        username: root
+        password: root
+        maxPoolSize: 100
+        minPoolSize: 5
+        # 配置从数据源 ds2
+      ds1:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://192.168.80.31:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+        username: root
+        password: root
+        maxPoolSize: 100
+        minPoolSize: 5
+        # 配置默认数据源也就是主数据源，若不配置则会认为都是从数据源，只有配置这个才能实现读写分离，后面也要配置主从复制机制，因为读写分离要依赖于主从复制
+    sharding:
+      default-data-source-name: ds0
+      # 配置分表分库策略：
+      tables:
+        # 逻辑表名
+        user:
+          # 配置数据库的分布式主键这里使用UUID
+          key-generator:
+            column: userid
+            type: UUID
+          # 数据节点，分片方式：数据源$-->{0..1}.逻辑表$->{0...2}
+          actual-data-nodes: ds$->{0..1}.user$->{0..1}
+            # 下面配置数据源分分配策略及表的策略
+          database-strategy:
+            inline:
+              sharding-column: age #数据源分片字段
+              algorithm-expression: ds$->{age % 2} #分库算法表达式，由于是俩张表
+          table-strategy:
+            inline:
+              sharding-column: age #数据源分片字段
+              algorithm-expression: user$->{age % 2} #分表算法表达式，由于是俩张表
+      # 配置mysql的主从复制信息
+    masterslave:
+      # 主从复制的名称
+      name: my-master-slave
+      master-data-source-name: ds0
+      slave-data-source-names: ds1
+      # 读取从节点的轮询策略，默认是随机，这里修改为轮询
+      load-balance-algorithm-type: round_robin
